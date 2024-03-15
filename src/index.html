@@ -8,7 +8,34 @@
     <script type="module" src="/build/hub-widgets.esm.js"></script>
     <script nomodule src="/build/hub-widgets.js"></script>
   </head>
+  <style>
+body{
+background-image: linear-gradient(to bottom right, rgb(250, 249, 249), rgb(199, 190, 190)) ;
+display: block;
+/* flex-direction: column; */
+height: 110vh;
+}
+
+pagetitle{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    margin: auto;
+    width: 500px;
+    flex-wrap: wrap;
+  }
+  h1{
+    font-size: 50px;
+  }
+  </style>
   <body>
-    <my-component first="Stencil" last="'Don't call me a framework' JS"></my-component>
+    <pagetitle>
+    <h1>Webex Contact Center Knowledge Hub</h1>
+
+  </pagetitle>
+  <bk></bk><bk></bk>
+    <!-- <my-component first="Stencil" last="'Don't call me a framework' JS"></my-component> -->
+    <k-hub-tiles t-list="/tiles.json"></k-hub-tiles>
+    <k-hub-links l-list="/links.json"></k-hub-links>
   </body>
 </html>

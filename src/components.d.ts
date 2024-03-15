@@ -6,56 +6,49 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
-    interface MyComponent {
-        /**
-          * The first name
-         */
-        "first": string;
-        /**
-          * The last name
-         */
-        "last": string;
-        /**
-          * The middle name
-         */
-        "middle": string;
+    interface KHubLinks {
+        "lList": string;
+    }
+    interface KHubTiles {
+        "tList": string;
     }
 }
 declare global {
-    interface HTMLMyComponentElement extends Components.MyComponent, HTMLStencilElement {
+    interface HTMLKHubLinksElement extends Components.KHubLinks, HTMLStencilElement {
     }
-    var HTMLMyComponentElement: {
-        prototype: HTMLMyComponentElement;
-        new (): HTMLMyComponentElement;
+    var HTMLKHubLinksElement: {
+        prototype: HTMLKHubLinksElement;
+        new (): HTMLKHubLinksElement;
+    };
+    interface HTMLKHubTilesElement extends Components.KHubTiles, HTMLStencilElement {
+    }
+    var HTMLKHubTilesElement: {
+        prototype: HTMLKHubTilesElement;
+        new (): HTMLKHubTilesElement;
     };
     interface HTMLElementTagNameMap {
-        "my-component": HTMLMyComponentElement;
+        "k-hub-links": HTMLKHubLinksElement;
+        "k-hub-tiles": HTMLKHubTilesElement;
     }
 }
 declare namespace LocalJSX {
-    interface MyComponent {
-        /**
-          * The first name
-         */
-        "first"?: string;
-        /**
-          * The last name
-         */
-        "last"?: string;
-        /**
-          * The middle name
-         */
-        "middle"?: string;
+    interface KHubLinks {
+        "lList"?: string;
+    }
+    interface KHubTiles {
+        "tList"?: string;
     }
     interface IntrinsicElements {
-        "my-component": MyComponent;
+        "k-hub-links": KHubLinks;
+        "k-hub-tiles": KHubTiles;
     }
 }
 export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
-            "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
+            "k-hub-links": LocalJSX.KHubLinks & JSXBase.HTMLAttributes<HTMLKHubLinksElement>;
+            "k-hub-tiles": LocalJSX.KHubTiles & JSXBase.HTMLAttributes<HTMLKHubTilesElement>;
         }
     }
 }
