@@ -6,30 +6,31 @@ import { Component, Prop, State, h } from '@stencil/core';
 })
 
 export class kHubTiles {
-    @State() tilesList: { title: string, url: string }[] = []
     @Prop() tList: string
+    @State() tiles = []
+    @State() tilesClean = []
+    @State() maincontent = []
 
+    componentWillLoad() {
 
-    async componentWillLoad() {
-        const response = await fetch(this.tList)
-        const tiles = await response.json()
-        this.tilesList = await tiles.map(match => {
-            return { title: match["title"], url: match["url"] }
-
+        Array.from(this.tList.split(",")).map(async (item) => {
+            console.log(item)
+            const response = await fetch(item);
+            this.tiles.push(Array.from(await response.json()))
+            this.tilesClean = this.tiles.flat(Infinity)
+            this.maincontent = this.tilesClean.map(
+                tile => (<div onClick={this.launch.bind(this, tile.url)}>{tile.title}</div>))
         })
+
     }
+
+
     launch(url) {
         window.location.href = url
     }
 
-
-
     render() {
-        let maincontent = this.tilesList.map(
-            tile => (<div onClick={this.launch.bind(this, tile.url)}>{tile.title}</div>))
-
-        return [<section>{maincontent}</section>
-
+        return [<section>{this.maincontent}</section>
         ]
     }
 
