@@ -14,7 +14,6 @@ export class kHubTiles {
     componentWillLoad() {
 
         Array.from(this.tList.split(",")).map(async (item) => {
-            console.log(item)
             const response = await fetch(item);
             this.tiles.push(Array.from(await response.json()))
             this.tilesClean = this.tiles.flat(Infinity)
